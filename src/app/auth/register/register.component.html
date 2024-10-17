@@ -1,0 +1,95 @@
+<div class="container mt-5">
+  <mat-grid-list cols="2" rowHeight="fit" gutterSize="16px">
+    <!-- Personal Details Card -->
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Personal Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div formGroupName="personalDetails">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="username">
+                <mat-error *ngIf="submitted && registerForm.get('username')?.hasError('required')">
+                  Username is required
+                </mat-error>
+                <mat-error *ngIf="submitted &&  registerForm.get('username')?.hasError('length')">
+                  Username must be at least 3 characters long
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+                <mat-error *ngIf="submitted && registerForm.get('email')?.hasError('required')">
+                  Email is required
+                </mat-error>
+                <mat-error *ngIf="submitted && registerForm.get('email')?.hasError('')">
+                  Email is invalid
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+                <mat-error *ngIf="submitted && registerForm.get('password')?.hasError('required')">
+                  Password is required
+                </mat-error>
+<!--                <mat-error *ngIf="submitted && personal.password.errors?.minlength">-->
+<!--                  Password must be at least 6 characters-->
+<!--                </mat-error>-->
+              </mat-form-field>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Company Details Card -->
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Company Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div formGroupName="companyDetails">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Company Name</mat-label>
+                <input matInput type="text" formControlName="companyName">
+                <mat-error *ngIf="submitted && registerForm.get('companyName')?.hasError('required')">
+                  Company name is required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Company Registration</mat-label>
+                <input matInput type="text" formControlName="companyRegistration">
+                <mat-error *ngIf="submitted && registerForm.get('companyRegistration')?.hasError('required')">
+                  Company registration is required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Operational Expertise</mat-label>
+                <input matInput type="text" formControlName="operationalExpertise">
+                <mat-error *ngIf="submitted && registerForm.get('operationalExpertise')?.hasError('required')">
+                  Operational expertise is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- Submit Button -->
+  <div class="text-center mt-3">
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+      Register
+    </button>
+  </div>
+</div>
